@@ -1,0 +1,36 @@
+Task scheduling (Vazifalarni rejalashtirish)
+
+Sheduling modulining vazifasi Ma'lum bir vazifalarni aniq rejalashtirilgan vaqtda avtomatik 
+bajarish xisoblanadi. Masalan:
+Bizning loyihamiz biznesni boshqarish xisoblanadi. Bu loyihada biznes egasi o'zining kundalik 
+xisoblarini (transaction) yuritib boradi. Scheduling modulining bizning loyihadagi vazifasi esa 
+kuning ma'lum bir qismida har kunlik kirim chiqimlarni foydalanuvchig statistika sifatida xisobotini
+berib boradi.
+
+Texnik topshiriq:
+
+Module:
+    Sheduling
+
+    sheduling.service.ts
+    sheduling.module.ts
+
+    sheduling.service.ts:
+        Ushbu faylda modulning asosiy biznes logikasi ishlatiladi.
+        1.
+        Prisma yordamida kunlik tranzaksiyalarni Income categoriyasiga tegishlik qismini olamiz
+        va foydalanuvchiga yuborishi kerak bo'lgan report obyektining income xossasiga qiymat 
+        qilib beramiz! Ushbu income obyektida, foydalanuvchining xar kunlik kirimlari berib boriladi
+        2.
+        Prisma yordamida kunlik tranzaksiyalarni Expense categoriyasiga tegishlik qismini olamiz
+        va foydalanuvchiga yuborishi kerak bo'lgan report obyektining expense xossasiga qiymat 
+        qilib beramiz! Ushbu expense obyektida, foydalanuvchining xar kunlik chiqimlari berib boriladi
+        3.
+        Chiqimda aynan qaysi kategoriya faol ishlatilmoqda(1 haftada 1 marta).
+        4
+        Kirimda qaysi kategoriya faol (1 faftada 1 marta)
+        5.
+        Bir kunlik tranzaksiya (1 kunda bir marta)
+        6.
+        Umumiy balans  (1 kunda 1 marta)
+        
