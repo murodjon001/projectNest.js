@@ -5,6 +5,8 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { ScheduleModules } from './modules/scheduling/scheduling.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { UserEventModule } from './modules/user/events/events.module';
+import { AppService } from './app.service';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -14,6 +16,8 @@ import { UserEventModule } from './modules/user/events/events.module';
     ScheduleModules,
     EventEmitterModule.forRoot(),
     UserEventModule 
-  ]
+  ],
+  providers:[AppService],
+  controllers:[AppController]
 })
 export class AppModule {}

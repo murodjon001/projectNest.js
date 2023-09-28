@@ -1,15 +1,27 @@
-import { Controller, Get, Post, UseGuards } from '@nestjs/common';
-import { Test } from './dashboard.service';
+import { Body, ConflictException, Controller, Get, Post, Request, UseGuards, } from '@nestjs/common';
+import { DashboardService } from './dashboard.service';
 import { AuthGuard } from '../user/auth/auth.guard';
+import { TotalBalance } from './dto/total-income.dto';
 
-
-@UseGuards(AuthGuard)
+// @UseGuards(AuthGuard)
 @Controller('dashboard')
 export class DashboardController {
-  constructor(private testService: Test) {}
-  @Get('')
-  getTest(): string {
-    
-    return this.testService.gethello();
+  constructor(private readonly totalIncomeService: DashboardService,) {}
+  @Post()
+  totalIncome(@Body() dto: TotalBalance){
+    try{
+   
+      const result = this.totalIncomeService.totalIncome(dto)
+      return result
+
+  }catch(e) {
+    throw new ConflictException(e)
+  }
+
+  }
+
+  @Get('get')
+  findAll (){
+    return this.totalIncomeService.findAll()
   }
 }
